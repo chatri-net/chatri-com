@@ -1,104 +1,172 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>⚛ Chatri Khatfan ∙ Quantum & AI Explorer ⚛</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatri Khatfan ∙ Quantum & AI Explorer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-  body {
-    margin: 0;
-    background: #f7f5f9;
-    font-family: 'Roboto', sans-serif;
-    color: #3b2e5a;
-  }
-  .wrapper {
-    max-width: 680px;
-    margin: 70px auto;
-    background: #fff;
-    border-radius: 18px;
-    padding: 48px 54px;
-    box-shadow: 0 10px 25px rgba(59, 46, 90, 0.15);
-  }
-  h1 {
+  /* Reset and base styles */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; background: #e6f0fa; color: #1a2a6c; scroll-behavior: smooth; }
+  a { text-decoration: none; color: inherit; }
+
+  /* Header / Hero */
+  header {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #274690, #8a9dc3);
+    color: #fff;
     text-align: center;
-    font-weight: 700;
-    font-size: 3rem;
-    color: #b8860b; /* goldenrod */
-    margin-bottom: 8px;
+    position: relative;
   }
-  h2 {
-    text-align: center;
-    font-style: italic;
-    font-weight: 400;
-    color: #6b5b95;
-    margin-bottom: 32px;
-  }
-  p {
-    font-size: 1.12rem;
-    line-height: 1.65;
-    margin-bottom: 20px;
-  }
-  strong.name {
-    color: #b8860b;
-    font-weight: 700;
-  }
-  ul {
-    margin-bottom: 32px;
-    padding-left: 20px;
-  }
-  ul li {
-    margin-bottom: 16px;
-    font-size: 1.1rem;
-  }
-  a {
-    color: #6b5b95;
-    font-weight: 700;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  footer {
-    border-top: 1px solid #d8d2e1;
-    text-align: center;
-    color: #3b2e5a;
-    font-weight: 600;
-    font-size: 1rem;
-    padding-top: 28px;
-  }
+  .profile-pic { width: 180px; height: 180px; border-radius: 50%; border: 4px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.3); animation: float 3s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-10px);} }
+  .hero-name { font-size: 3rem; font-weight: 800; margin-top: 15px; }
+  .thai-name { font-family: 'Noto Sans Thai', sans-serif; font-size: 1.6rem; margin-top: 4px; color: #ffd700; }
+  .hero-tagline { font-size: 1.4rem; margin-top: 10px; font-style: italic; }
+
+  /* Section styles */
+  section { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+  h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; color: #274690; }
+  p { line-height: 1.6; margin-bottom: 18px; }
+
+  /* Timeline */
+  .timeline { position: relative; margin: 40px 0; }
+  .timeline::after { content: ''; position: absolute; width: 4px; background: #d35400; top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+  .timeline-item { padding: 20px 40px; position: relative; width: 50%; }
+  .timeline-item.left { left: 0; }
+  .timeline-item.right { left: 50%; }
+  .timeline-item::before { content: ''; position: absolute; width: 20px; height: 20px; background: #d35400; border-radius: 50%; top: 20px; right: -10px; }
+  .timeline-item.right::before { left: -10px; }
+
+  /* Gallery / Projects */
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .gallery-item { position: relative; overflow: hidden; border-radius: 12px; cursor: pointer; transition: transform 0.3s ease; }
+  .gallery-item img { width: 100%; display: block; transition: transform 0.3s ease; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item span { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); color: #fff; padding: 6px 12px; border-radius: 6px; font-weight: 600; }
+
+  /* Skills */
+  .skills { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; }
+  .skill { text-align: center; }
+  .skill svg circle { fill: none; stroke-width: 12; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; }
+  .skill svg .bg { stroke: #d3dff5; }
+  .skill svg .progress { stroke: #d35400; stroke-dasharray: 251; stroke-dashoffset: 251; animation: progressAnim 2s forwards; }
+  @keyframes progressAnim { to { stroke-dashoffset: var(--offset); } }
+  .skill h3 { margin-top: 15px; font-size: 1.1rem; color: #274690; }
+
+  /* Contact */
+  .contact-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+  .contact-form input, .contact-form textarea { padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem; width: 100%; }
+  .contact-form button { padding: 12px; border: none; border-radius: 8px; background: #d35400; color: #fff; font-size: 1.1rem; cursor: pointer; transition: background 0.3s ease; }
+  .contact-form button:hover { background: #f39c12; }
+
+  /* Footer */
+  footer { text-align: center; padding: 30px 20px; background: #274690; color: #fff; font-weight: 600; }
+
+  /* Animations on scroll */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
-  <div class="wrapper">
-    <h1><strong class="name">Chatri Khatfan</strong></h1>
-    <h2>Professional Biography</h2>
 
-    <p><strong class="name">Chatri Khatfan</strong> has extensive leadership and technical management experience, successfully leading companies in Thailand and Japan. He managed Thai Audiotex Limited and TAS Mobile Limited for three years, progressing to top management. After a project manager role at Locus Telecommunications Inc., he returned to Thai Audiotex Limited as <strong>Head of Technical Operations</strong> for both companies for nine years.</p>
+<!-- Hero Section -->
+<header>
+  <img src="profile.jpg" alt="Chatri Khatfan" class="profile-pic">
+  <div class="hero-name">Chatri Khatfan</div>
+  <div class="thai-name">ชาตรี ขัดฝั้น</div>
+  <div class="hero-tagline">Quantum & AI Explorer</div>
+</header>
 
-    <p>Co-founder and technical director of <strong>Utel Corporation (Japan)</strong> since 2010, <strong class="name">Chatri</strong> has been instrumental in steering technical vision and development.</p>
+<!-- About Section -->
+<section id="about" class="fade-in">
+  <h2>About Me</h2>
+  <p><strong>Chatri Khatfan</strong> has extensive leadership and technical management experience, successfully leading companies in Thailand and Japan. He managed Thai Audiotex Limited and TAS Mobile Limited for three years, progressing to top management. After a project manager role at Locus Telecommunications Inc., he returned to Thai Audiotex Limited as <strong>Head of Technical Operations</strong> for both companies for nine years.</p>
+  <p>Co-founder and technical director of <strong>Utel Corporation (Japan)</strong> since 2010, Chatri has been instrumental in steering technical vision and development.</p>
+  <p>He holds a Bachelor of Engineering in Electrical and Computer Engineering from Queensland University of Technology (QUT) and postgraduate credentials in Computer System Engineering from the University of Queensland (UQ), both highly regarded internationally. His scholarship-backed education strengthened his technical and global outlook. Fluent in English, Chatri excels in international communication.</p>
+</section>
 
-    <p>He holds a Bachelor of Engineering in Electrical and Computer Engineering from Queensland University of Technology (QUT) and postgraduate credentials in Computer System Engineering from the University of Queensland (UQ), both highly regarded internationally. His scholarship-backed education strengthened his technical and global outlook. Fluent in English, <strong class="name">Chatri</strong> excels in international communication.</p>
-
-    <p>Technical expertise includes embedded systems, network architecture, software development, system integration, and hardware troubleshooting, with proficiency in C/C++, Python, Java, IoT, cloud, and AI technologies.</p>
-
-    <h3>Current AI Projects</h3>
-    <ul>
-      <li>Machine learning models for predictive analytics to improve business decisions. <a href="https://cloud.google.com/ai-platform" target="_blank" rel="noopener noreferrer">Google Cloud AI Platform</a></li>
-      <li>Computer vision for real-time object detection and quality control. <a href="https://opencv.org/" target="_blank" rel="noopener noreferrer">OpenCV</a></li>
-      <li>NLP applications enhancing customer service and chatbots. <a href="https://openai.com/research/gpt-4" target="_blank" rel="noopener noreferrer">OpenAI GPT-4</a></li>
-      <li>AI automation for network management and cybersecurity. <a href="https://www.ibm.com/security/artificial-intelligence" target="_blank" rel="noopener noreferrer">IBM Watson Cybersecurity</a></li>
-    </ul>
-
-    <p><strong class="name">Chatri</strong>’s combination of technical skill, leadership, and communication make him well-suited for roles demanding strategic insight and innovation.</p>
-
-    <footer>
-      Website: 
-      <a href="http://www.chatri.com" target="_blank" rel="noopener noreferrer">www.chatri.com</a> | 
-      <a href="https://thaisa.tripod.com/qut.html" target="_blank" rel="noopener noreferrer">QUT Info</a> | 
-      Contact: <a href="mailto:chatri@chatri.com">chatri@chatri.com</a><br />
-      &copy; 2025 <strong class="name">Chatri Khatfan</strong>
-    </footer>
+<!-- Projects Section -->
+<section id="projects" class="fade-in">
+  <h2>Projects</h2>
+  <div class="gallery">
+    <div class="gallery-item"><img src="ai.jpg" alt="AI & Machine Learning"><span>AI & Machine Learning</span></div>
+    <div class="gallery-item"><img src="quantum.jpg" alt="Quantum Computing"><span>Quantum Computing</span></div>
+    <div class="gallery-item"><img src="quantum-hybrid.jpg" alt="Hybrid Quantum Models"><span>Hybrid Quantum-Tech</span></div>
+    <div class="gallery-item"><img src="cyber-ai.jpg" alt="Cybersecurity & AI"><span>Cybersecurity & AI</span></div>
   </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="fade-in">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill">
+      <svg width="120" height="120">
+        <circle class="bg" cx="60" cy="60" r="40"></circle>
+        <circle class="progress" cx="60" cy="60" r="40" style="--offset:100;"></circle>
+      </svg>
+      <h3>C / C++</h3>
+    </div>
+    <div class="skill">
+      <svg width="120" height="120">
+        <circle class="bg" cx="60" cy="60" r="40"></circle>
+        <circle class="progress" cx="60" cy="60" r="40" style="--offset:80;"></circle>
+      </svg>
+      <h3>Python</h3>
+    </div>
+    <div class="skill">
+      <svg width="120" height="120">
+        <circle class="bg" cx="60" cy="60" r="40"></circle>
+        <circle class="progress" cx="60" cy="60" r="40" style="--offset:90;"></circle>
+      </svg>
+      <h3>AI / ML</h3>
+    </div>
+    <div class="skill">
+      <svg width="120" height="120">
+        <circle class="bg" cx="60" cy="60" r="40"></circle>
+        <circle class="progress" cx="60" cy="60" r="40" style="--offset:70;"></circle>
+      </svg>
+      <h3>Quantum Computing</h3>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="fade-in">
+  <h2>Contact Me</h2>
+  <form class="contact-form" action="mailto:chatri@chatri.com" method="post" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 Chatri Khatfan / ชาตรี ขัดฝั้น | <a href="http://www.chatri.net" target="_blank">www.chatri.net</a>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+  faders.forEach(fader => appearOnScroll.observe(fader));
+</script>
+
 </body>
 </html>
