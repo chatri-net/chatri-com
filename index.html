@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chatri Khatfan ∙ Quantum & AI Explorer</title>
+<title>🔭 Chatri Khatfan ∙ Quantum & AI Explorer 🤖</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -52,22 +52,61 @@
   .gallery-item span { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); color: #fff; padding: 6px 12px; border-radius: 6px; font-weight: 600; }
 
   /* Skills */
-  .skills { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 30px; }
-  .skill { text-align: center; }
-  .skill svg circle { fill: none; stroke-width: 12; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; }
-  .skill svg .bg { stroke: #d3dff5; }
-  .skill svg .progress { stroke: #d35400; stroke-dasharray: 251; stroke-dashoffset: 251; animation: progressAnim 2s forwards; }
-  @keyframes progressAnim { to { stroke-dashoffset: var(--offset); } }
-  .skill h3 { margin-top: 15px; font-size: 1.1rem; color: #274690; }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+  }
+  .skill-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+  .skill-card:hover { transform: translateY(-6px); }
+  .skill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .skill-icon { font-size: 1.6rem; }
+  .progress-bar {
+    background: #d3dff5;
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+  }
+  .progress {
+    background: linear-gradient(90deg, #274690, #d35400);
+    height: 100%;
+    border-radius: 8px;
+  }
 
-  /* Contact */
-  .contact-form { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
-  .contact-form input, .contact-form textarea { padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 1rem; width: 100%; }
-  .contact-form button { padding: 12px; border: none; border-radius: 8px; background: #d35400; color: #fff; font-size: 1.1rem; cursor: pointer; transition: background 0.3s ease; }
-  .contact-form button:hover { background: #f39c12; }
+  /* Video Section */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin: 30px auto;
+    max-width: 1000px;
+  }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
 
   /* Footer */
   footer { text-align: center; padding: 30px 20px; background: #274690; color: #fff; font-weight: 600; }
+  footer a { color: #ffd700; text-decoration: none; }
 
   /* Animations on scroll */
   .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
@@ -81,7 +120,7 @@
   <img src="profile.jpg" alt="Chatri Khatfan" class="profile-pic">
   <div class="hero-name">Chatri Khatfan</div>
   <div class="thai-name">ชาตรี ขัดฝั้น</div>
-  <div class="hero-tagline">Quantum & AI Explorer</div>
+  <div class="hero-tagline">🔭 Quantum & AI Explorer 🤖</div>
 </header>
 
 <!-- About Section -->
@@ -106,47 +145,76 @@
 <!-- Skills Section -->
 <section id="skills" class="fade-in">
   <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill">
-      <svg width="120" height="120">
-        <circle class="bg" cx="60" cy="60" r="40"></circle>
-        <circle class="progress" cx="60" cy="60" r="40" style="--offset:100;"></circle>
-      </svg>
-      <h3>C / C++</h3>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-header">
+        <span class="skill-icon">💻</span>
+        <h3>C / C++</h3>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" style="width: 85%;"></div>
+      </div>
     </div>
-    <div class="skill">
-      <svg width="120" height="120">
-        <circle class="bg" cx="60" cy="60" r="40"></circle>
-        <circle class="progress" cx="60" cy="60" r="40" style="--offset:80;"></circle>
-      </svg>
-      <h3>Python</h3>
+    <div class="skill-card">
+      <div class="skill-header">
+        <span class="skill-icon">🐍</span>
+        <h3>Python</h3>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" style="width: 90%;"></div>
+      </div>
     </div>
-    <div class="skill">
-      <svg width="120" height="120">
-        <circle class="bg" cx="60" cy="60" r="40"></circle>
-        <circle class="progress" cx="60" cy="60" r="40" style="--offset:90;"></circle>
-      </svg>
-      <h3>AI / ML</h3>
+    <div class="skill-card">
+      <div class="skill-header">
+        <span class="skill-icon">🤖</span>
+        <h3>AI / ML</h3>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" style="width: 88%;"></div>
+      </div>
     </div>
-    <div class="skill">
-      <svg width="120" height="120">
-        <circle class="bg" cx="60" cy="60" r="40"></circle>
-        <circle class="progress" cx="60" cy="60" r="40" style="--offset:70;"></circle>
-      </svg>
-      <h3>Quantum Computing</h3>
+    <div class="skill-card">
+      <div class="skill-header">
+        <span class="skill-icon">⚛️</span>
+        <h3>Quantum Computing</h3>
+      </div>
+      <div class="progress-bar">
+        <div class="progress" style="width: 70%;"></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Videos Section -->
+<section id="videos" class="fade-in">
+  <h2>Videos</h2>
+  <div class="video-grid">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" 
+              title="Intro Video 1"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" 
+              title="Intro Video 2"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Links -->
 <section id="contact" class="fade-in">
-  <h2>Contact Me</h2>
-  <form class="contact-form" action="mailto:chatri@chatri.com" method="post" enctype="text/plain">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
+  <h2>Contact</h2>
+  <p style="text-align:center;">You can reach me via:</p>
+  <ul style="list-style:none; padding:0; text-align:center; line-height:1.8;">
+    <li><a href="mailto:chatri@chatri.com">📧 Email</a></li>
+    <li><a href="https://www.linkedin.com/in/YOURPROFILE" target="_blank">🔗 LinkedIn</a></li>
+    <li><a href="https://github.com/chatri-net" target="_blank">🐙 GitHub</a></li>
+  </ul>
 </section>
 
 <!-- Footer -->
@@ -170,4 +238,3 @@
 
 </body>
 </html>
-
