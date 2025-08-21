@@ -35,15 +35,6 @@
   h2 { font-size: 2rem; margin-bottom: 30px; text-align: center; color: #274690; }
   p { line-height: 1.6; margin-bottom: 18px; }
 
-  /* Timeline */
-  .timeline { position: relative; margin: 40px 0; }
-  .timeline::after { content: ''; position: absolute; width: 4px; background: #d35400; top: 0; bottom: 0; left: 50%; margin-left: -2px; }
-  .timeline-item { padding: 20px 40px; position: relative; width: 50%; }
-  .timeline-item.left { left: 0; }
-  .timeline-item.right { left: 50%; }
-  .timeline-item::before { content: ''; position: absolute; width: 20px; height: 20px; background: #d35400; border-radius: 50%; top: 20px; right: -10px; }
-  .timeline-item.right::before { left: -10px; }
-
   /* Gallery / Projects */
   .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
   .gallery-item { position: relative; overflow: hidden; border-radius: 12px; cursor: pointer; transition: transform 0.3s ease; }
@@ -62,9 +53,12 @@
     border-radius: 14px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .skill-card:hover { transform: translateY(-6px); }
+  .skill-card:hover { 
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  }
   .skill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
   .skill-icon { font-size: 1.6rem; }
   .progress-bar {
@@ -94,6 +88,10 @@
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+  }
+  .video-container:hover {
+    transform: scale(1.02);
   }
   .video-container iframe {
     position: absolute;
@@ -109,133 +107,4 @@
   footer a { color: #ffd700; text-decoration: none; }
 
   /* Animations on scroll */
-  .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-</style>
-</head>
-<body>
-
-<!-- Hero Section -->
-<header>
-  <img src="profile.jpg" alt="Chatri Khatfan" class="profile-pic">
-  <div class="hero-name">Chatri Khatfan</div>
-  <div class="thai-name">ชาตรี ขัดฝั้น</div>
-  <div class="hero-tagline">🔭 Quantum & AI Explorer 🤖</div>
-</header>
-
-<!-- About Section -->
-<section id="about" class="fade-in">
-  <h2>About Me</h2>
-  <p><strong>Chatri Khatfan</strong> has extensive leadership and technical management experience, successfully leading companies in Thailand and Japan. He managed Thai Audiotex Limited and TAS Mobile Limited for three years, progressing to top management. After a project manager role at Locus Telecommunications Inc., he returned to Thai Audiotex Limited as <strong>Head of Technical Operations</strong> for both companies for nine years.</p>
-  <p>Co-founder and technical director of <strong>Utel Corporation (Japan)</strong> since 2010, Chatri has been instrumental in steering technical vision and development.</p>
-  <p>He holds a Bachelor of Engineering in Electrical and Computer Engineering from Queensland University of Technology (QUT) and postgraduate credentials in Computer System Engineering from the University of Queensland (UQ), both highly regarded internationally. His scholarship-backed education strengthened his technical and global outlook. Fluent in English, Chatri excels in international communication.</p>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="fade-in">
-  <h2>Projects</h2>
-  <div class="gallery">
-    <div class="gallery-item"><img src="ai.jpg" alt="AI & Machine Learning"><span>AI & Machine Learning</span></div>
-    <div class="gallery-item"><img src="quantum.jpg" alt="Quantum Computing"><span>Quantum Computing</span></div>
-    <div class="gallery-item"><img src="quantum-hybrid.jpg" alt="Hybrid Quantum Models"><span>Hybrid Quantum-Tech</span></div>
-    <div class="gallery-item"><img src="cyber-ai.jpg" alt="Cybersecurity & AI"><span>Cybersecurity & AI</span></div>
-  </div>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="fade-in">
-  <h2>Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-header">
-        <span class="skill-icon">💻</span>
-        <h3>C / C++</h3>
-      </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 85%;"></div>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-header">
-        <span class="skill-icon">🐍</span>
-        <h3>Python</h3>
-      </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 90%;"></div>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-header">
-        <span class="skill-icon">🤖</span>
-        <h3>AI / ML</h3>
-      </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 88%;"></div>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-header">
-        <span class="skill-icon">⚛️</span>
-        <h3>Quantum Computing</h3>
-      </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 70%;"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Videos Section -->
-  <section id="videos" class="fade-in">
-    <h2>Videos</h2>
-    <div class="video-grid">
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/acvVE1y7KZE" 
-                title="Intro Video 1"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/2Scq7oEv1mw" 
-                title="Intro Video 2"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen></iframe>
-      </div>
-    </div>
- </section>
-
-<!-- Contact Links -->
-<section id="contact" class="fade-in">
-  <h2>Contact</h2>
-  <p style="text-align:center;">You can reach me via:</p>
-  <ul style="list-style:none; padding:0; text-align:center; line-height:1.8;">
-    <li><a href="mailto:chatri@chatri.com">📧 Email</a></li>
-    <li><a href="https://www.linkedin.com/in/YOURPROFILE" target="_blank">🔗 LinkedIn</a></li>
-    <li><a href="https://github.com/chatri-net" target="_blank">🐙 GitHub</a></li>
-  </ul>
-</section>
-
-<!-- Footer -->
-<footer>
-  &copy; 2025 Chatri Khatfan / ชาตรี ขัดฝั้น | <a href="http://www.chatri.net" target="_blank">www.chatri.net</a>
-</footer>
-
-<script>
-  // Fade-in on scroll
-  const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    });
-  }, appearOptions);
-  faders.forEach(fader => appearOnScroll.observe(fader));
-</script>
-
-</body>
-</html>
-
+  .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ea
