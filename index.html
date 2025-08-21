@@ -9,8 +9,35 @@
 <style>
   /* Reset and base styles */
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Poppins', sans-serif; background: #e6f0fa; color: #1a2a6c; scroll-behavior: smooth; }
+  body { font-family: 'Poppins', sans-serif; background: #e6f0fa; color: #1a2a6c; scroll-behavior: smooth; transition: background 0.4s, color 0.4s; }
   a { text-decoration: none; color: inherit; }
+
+  /* Theme Variants */
+  body.light { background: #fdfdfd; color: #222; }
+  body.dark { background: #121212; color: #eee; }
+  body.dark header { background: linear-gradient(135deg, #0f2027, #2c5364); }
+  body.dark footer { background: #0f2027; }
+  body.classic { background: #e6f0fa; color: #1a2a6c; }
+
+  /* Theme Switcher */
+  .theme-switcher {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.85);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 8px 12px;
+  }
+  .theme-switcher button {
+    margin: 0 4px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+  }
 
   /* Header / Hero */
   header {
@@ -52,32 +79,13 @@
   .gallery-item span { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); color: #fff; padding: 6px 12px; border-radius: 6px; font-weight: 600; }
 
   /* Skills */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-  }
-  .skill-card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
-  }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+  .skill-card { background: #fff; border-radius: 14px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: transform 0.3s ease; }
   .skill-card:hover { transform: translateY(-6px); }
   .skill-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
   .skill-icon { font-size: 1.6rem; }
-  .progress-bar {
-    background: #d3dff5;
-    border-radius: 8px;
-    height: 10px;
-    overflow: hidden;
-  }
-  .progress {
-    background: linear-gradient(90deg, #274690, #d35400);
-    height: 100%;
-    border-radius: 8px;
-  }
+  .progress-bar { background: #d3dff5; border-radius: 8px; height: 10px; overflow: hidden; }
+  .progress { background: linear-gradient(90deg, #274690, #d35400); height: 100%; border-radius: 8px; }
 
   /* Video Section */
   .video-grid {
@@ -113,7 +121,14 @@
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
-<body>
+<body class="classic">
+
+<!-- Theme Switcher -->
+<div class="theme-switcher">
+  <button onclick="setTheme('light')">🌞 Light</button>
+  <button onclick="setTheme('dark')">🌙 Dark</button>
+  <button onclick="setTheme('classic')">🔵 Classic</button>
+</div>
 
 <!-- Hero Section -->
 <header>
@@ -151,36 +166,28 @@
         <span class="skill-icon">💻</span>
         <h3>C / C++</h3>
       </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 85%;"></div>
-      </div>
+      <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
     </div>
     <div class="skill-card">
       <div class="skill-header">
         <span class="skill-icon">🐍</span>
         <h3>Python</h3>
       </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 90%;"></div>
-      </div>
+      <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
     </div>
     <div class="skill-card">
       <div class="skill-header">
         <span class="skill-icon">🤖</span>
         <h3>AI / ML</h3>
       </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 88%;"></div>
-      </div>
+      <div class="progress-bar"><div class="progress" style="width: 88%;"></div></div>
     </div>
     <div class="skill-card">
       <div class="skill-header">
         <span class="skill-icon">⚛️</span>
         <h3>Quantum Computing</h3>
       </div>
-      <div class="progress-bar">
-        <div class="progress" style="width: 70%;"></div>
-      </div>
+      <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
     </div>
   </div>
 </section>
@@ -189,19 +196,19 @@
 <section id="videos" class="fade-in">
   <h2>Videos</h2>
   <div class="video-grid">
+    <!-- Old Videos -->
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/hKpAJQJ0TdQ?vq=hd720" 
-              title="Quantum & AI Talk 1"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/acvVE1y7KZE?vq=hd720" title="Intro Video 1" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/9zb6P7usKrE?vq=hd720" 
-              title="Quantum & AI Talk 2"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/2Scq7oEv1mw?vq=hd720" title="Intro Video 2" allowfullscreen></iframe>
+    </div>
+    <!-- New Videos -->
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/hKpAJQJ0TdQ?vq=hd720" title="Quantum & AI Talk 1" allowfullscreen></iframe>
+    </div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/9zb6P7usKrE?vq=hd720" title="Quantum & AI Talk 2" allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -234,6 +241,16 @@
     });
   }, appearOptions);
   faders.forEach(fader => appearOnScroll.observe(fader));
+
+  // Theme Switcher
+  function setTheme(theme) {
+    document.body.className = theme;
+    localStorage.setItem('theme', theme);
+  }
+  (function() {
+    const saved = localStorage.getItem('theme') || 'classic';
+    document.body.className = saved;
+  })();
 </script>
 
 </body>
